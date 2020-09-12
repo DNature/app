@@ -1,4 +1,4 @@
-import { BaseTheme, createText, createTheme } from '@shopify/restyle';
+import { createText, createTheme } from '@shopify/restyle';
 
 const palette = {
   primary: {
@@ -24,7 +24,7 @@ const palette = {
   }
 };
 
-const theme: BaseTheme = createTheme({
+const theme = createTheme({
   colors: {
     'p-100': palette.primary[100],
     'p-75': palette.primary[75],
@@ -40,7 +40,8 @@ const theme: BaseTheme = createTheme({
     'a-75': palette.accent[75],
     'a-50': palette.accent[50],
     'a-25': palette.accent[25],
-    'a-10': palette.accent[10]
+    'a-10': palette.accent[10],
+    white: '#fff'
   },
   spacing: {
     s: 8,
