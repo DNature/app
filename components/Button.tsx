@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { RectButton, RectButtonProperties } from 'react-native-gesture-handler';
 import { useTheme } from '@shopify/restyle';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { Text } from './Text';
 import { Theme } from '../theme';
@@ -29,7 +29,7 @@ export const Button = ({ label, onPress, variant = 'light' }: ButtonProps) => {
     variant === 'primary'
       ? colors['p-100']
       : variant === 'black'
-      ? colors['b-100']
+      ? colors['b-75']
       : variant === 'bordered'
       ? 'transparent'
       : colors['p-10'];
@@ -42,7 +42,6 @@ export const Button = ({ label, onPress, variant = 'light' }: ButtonProps) => {
       ? colors['p-100']
       : colors['b-75'];
 
-  console.log({ BG, TEXT });
   return (
     <RectButton
       style={[
@@ -55,16 +54,18 @@ export const Button = ({ label, onPress, variant = 'light' }: ButtonProps) => {
       ]}
       {...{ onPress, variant }}
     >
-      <Text
-        style={{
-          fontFamily: `Poppins-SemiBold`,
-          textAlign: 'center',
-          fontSize: spacing.m,
-          color: TEXT
-        }}
-      >
-        {label}
-      </Text>
+      <View accessible style={{ borderRadius: 25 }}>
+        <Text
+          style={{
+            fontFamily: `Poppins-SemiBold`,
+            textAlign: 'center',
+            fontSize: spacing.m,
+            color: TEXT
+          }}
+        >
+          {label}
+        </Text>
+      </View>
     </RectButton>
   );
 };

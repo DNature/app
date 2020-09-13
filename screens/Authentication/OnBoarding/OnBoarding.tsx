@@ -9,6 +9,7 @@ import slides from './SlideData';
 import Slide from './Slide';
 import { Theme } from '../../../theme';
 import { Button } from '../../../components';
+import SlideNavigator from './SlideNavigator';
 
 const { height, width } = Dimensions.get('window');
 
@@ -39,20 +40,21 @@ const Onboarding = () => {
         </Animated.ScrollView>
       </View>
       <View style={styles.footer}>
-        <Animated.View
+        <View
           style={[
-            styles.footerContent,
-            { transform: [{ translateX: multiply(x, -1) }] }
+            styles.footerContent
+            // { transform: [{ translateX: multiply(x, -1) }] }
           ]}
         >
           {slides.map((_, _index) => (
-            <Button
+            <SlideNavigator
               onPress={() => console.log('pressed')}
               key={_index}
-              label="next"
+              last={slides.length === -1}
+              first={_index === 0}
             />
           ))}
-        </Animated.View>
+        </View>
       </View>
     </View>
   );
@@ -65,12 +67,12 @@ const styles = StyleSheet.create({
     // height
   },
   footer: {
-    // ...StyleSheet.absoluteFillObject,
     flex: 1
-    // backgroundColor: 'cyan'
   },
   footerContent: {
-    flexDirection: 'row'
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: 'cyan'
     // flex: 1,
   }
 });
