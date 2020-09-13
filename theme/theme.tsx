@@ -46,8 +46,10 @@ const theme = createTheme({
   spacing: {
     s: 8,
     m: 16,
-    l: 24,
-    xl: 40
+    l: 25,
+    xl: 40,
+    padding: 13,
+    radius: 25
   },
   breakpoints: {
     phone: 0,
@@ -56,14 +58,13 @@ const theme = createTheme({
   textVariants: {
     title1: {
       fontSize: 24,
-      fontWeight: 600,
       lineHeight: 36,
       fontFamily: 'Poppins-SemiBold'
     },
     title2: {
       fontSize: 18,
       lineHeight: 27,
-      fontFamily: 'Poppins-Regular',
+      fontFamily: 'Poppins-Medium',
       color: 'b-50'
     }
   }

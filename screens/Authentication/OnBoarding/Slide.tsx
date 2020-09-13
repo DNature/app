@@ -49,10 +49,7 @@ export default Slide;
 const styles = StyleSheet.create({
   container: {
     width,
-    flex: 1,
     padding: 40,
-    height,
-    paddingBottom: 262,
     paddingTop: 67
   },
   title: {
