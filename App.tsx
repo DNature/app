@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThemeProvider } from '@shopify/restyle';
+import { Provider as PaperProvider } from 'react-native-paper';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
@@ -18,12 +18,12 @@ const fonts = {
 export default function App() {
   return (
     <LoadAssets fonts={fonts}>
-      <ThemeProvider {...{ theme }}>
+      <PaperProvider {...{ theme }}>
         <SafeAreaProvider>
           <Navigation />
           <StatusBar />
         </SafeAreaProvider>
-      </ThemeProvider>
+      </PaperProvider>
     </LoadAssets>
   );
 }
