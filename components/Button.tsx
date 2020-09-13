@@ -1,12 +1,8 @@
 import * as React from 'react';
-import { RectButton, RectButtonProperties } from 'react-native-gesture-handler';
-import { useTheme } from '@shopify/restyle';
+import { useTheme, Button as RectButton, Text } from 'react-native-paper';
 import { StyleSheet, View } from 'react-native';
 
-import { Text } from './Text';
-import { Theme } from '../theme';
-
-interface ButtonProps extends RectButtonProperties {
+interface ButtonProps {
   label: string;
   onPress: () => void;
   variant?: 'black' | 'primary' | 'bordered' | 'light';
@@ -23,49 +19,44 @@ primary: {
     }
  */
 export const Button = ({ label, onPress, variant = 'light' }: ButtonProps) => {
-  const { colors, spacing } = useTheme<Theme>();
+  const { colors } = useTheme();
 
   const BG =
     variant === 'primary'
-      ? colors['p-100']
+      ? colors.primary
       : variant === 'black'
-      ? colors['b-75']
+      ? colors.b[75]
       : variant === 'bordered'
       ? 'transparent'
-      : colors['p-10'];
+      : colors.p[10];
   const TEXT =
     variant === 'primary'
-      ? colors['white']
+      ? colors.background
       : variant === 'black'
-      ? colors['white']
+      ? colors.background
       : variant === 'bordered'
-      ? colors['p-100']
-      : colors['b-75'];
+      ? colors.primary
+      : colors.b[75];
 
   return (
     <RectButton
       style={[
         styles.container,
         {
-          backgroundColor: BG,
-          borderRadius: spacing.radius,
-          padding: spacing.padding
+          backgroundColor: BG
         }
       ]}
       {...{ onPress, variant }}
     >
-      <View accessible style={{ borderRadius: 25 }}>
-        <Text
-          style={{
-            fontFamily: `Poppins-SemiBold`,
-            textAlign: 'center',
-            fontSize: spacing.m,
-            color: TEXT
-          }}
-        >
-          {label}
-        </Text>
-      </View>
+      <Text
+        style={{
+          fontFamily: `Poppins-SemiBold`,
+          textAlign: 'center',
+          color: TEXT
+        }}
+      >
+        {label}
+      </Text>
     </RectButton>
   );
 };

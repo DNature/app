@@ -1,23 +1,22 @@
 import React from 'react';
 import Animated, { multiply } from 'react-native-reanimated';
 
-import { useTheme } from '@shopify/restyle';
+import { useTheme } from 'react-native-paper';
 import { Dimensions, StyleSheet, View } from 'react-native';
 import { useScrollHandler } from 'react-native-redash';
 
 import slides from './SlideData';
 import Slide from './Slide';
-import { Theme } from '../../../theme';
-import { Button } from '../../../components';
 import SlideNavigator from './SlideNavigator';
 
 const { height, width } = Dimensions.get('window');
 
 const Onboarding = () => {
-  const theme = useTheme<Theme>();
+  const {
+    colors: { background: white }
+  } = useTheme();
   const scroll = React.useRef<Animated.ScrollView>(null);
   const { scrollHandler, x } = useScrollHandler();
-  const { white } = theme.colors;
 
   return (
     <View style={{ flex: 1, backgroundColor: white }}>

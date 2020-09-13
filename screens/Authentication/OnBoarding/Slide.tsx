@@ -6,7 +6,7 @@ import {
   StyleSheet,
   View
 } from 'react-native';
-import { Text } from '../../../components';
+import { Subheading } from 'react-native-paper';
 
 interface SlideProps {
   title: string;
@@ -37,9 +37,7 @@ const Slide = ({
           marginTop: inverted ? 60 : 0
         }}
       />
-      <Text variant="title2" style={styles.title}>
-        {title}
-      </Text>
+      <Subheading style={styles.title}>{title}</Subheading>
     </View>
   );
 };
