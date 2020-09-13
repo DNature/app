@@ -54,14 +54,20 @@ const theme = createTheme({
     tablet: 768
   },
   textVariants: {
-    primary: {
-      marginBottom: 'xl',
-      borderColorRight: 'p-100',
-      fontSize: 50
+    title1: {
+      fontSize: 24,
+      fontWeight: 600,
+      lineHeight: 36,
+      fontFamily: 'Poppins-SemiBold'
+    },
+    title2: {
+      fontSize: 18,
+      lineHeight: 27,
+      fontFamily: 'Poppins-Regular',
+      color: 'b-50'
     }
   }
 });
 
 export type Theme = typeof theme;
-export const Text = createText<Theme>();
 export default theme;
