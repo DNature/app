@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { useTheme, Button as RectButton, Text } from 'react-native-paper';
-import { StyleSheet, View } from 'react-native';
+import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 
 interface ButtonProps {
   label: string;
   onPress: () => void;
   variant?: 'black' | 'primary' | 'bordered' | 'light';
+  style?: ViewStyle;
 }
 
 /*
@@ -18,14 +19,19 @@ primary: {
       borderRadius: 'radius'
     }
  */
-export const Button = ({ label, onPress, variant = 'light' }: ButtonProps) => {
+export const Button = ({
+  label,
+  onPress,
+  variant = 'light',
+  style = {}
+}: ButtonProps) => {
   const { colors } = useTheme();
 
   const BG =
     variant === 'primary'
       ? colors.primary
       : variant === 'black'
-      ? colors.b[75]
+      ? colors.b[100]
       : variant === 'bordered'
       ? 'transparent'
       : colors.p[10];
@@ -43,24 +49,26 @@ export const Button = ({ label, onPress, variant = 'light' }: ButtonProps) => {
       style={[
         styles.container,
         {
-          backgroundColor: BG
+          backgroundColor: BG,
+          ...style
         }
       ]}
       {...{ onPress, variant }}
+      contentStyle={[styles.contentStyle]}
+      color={TEXT}
     >
-      <Text
-        style={{
-          fontFamily: `Poppins-SemiBold`,
-          textAlign: 'center',
-          color: TEXT
-        }}
-      >
-        {label}
-      </Text>
+      {label}
     </RectButton>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {}
+  container: {
+    fontFamily: `Poppins-SemiBold`,
+    borderRadius: 25,
+    fontSize: 16
+  },
+  contentStyle: {
+    height: 50
+  }
 });

@@ -39,21 +39,30 @@ const Onboarding = () => {
         </Animated.ScrollView>
       </View>
       <View style={styles.footer}>
-        <View
+        <Animated.View
           style={[
-            styles.footerContent
-            // { transform: [{ translateX: multiply(x, -1) }] }
+            styles.footerContent,
+            {
+              width: width * slides.length,
+              transform: [{ translateX: multiply(x, -1) }]
+              // transform: [{ translateX: multiply(x, -1) }]
+            }
           ]}
         >
-          {slides.map((_, _index) => (
+          {slides.map((_, index) => (
             <SlideNavigator
-              onPress={() => console.log('pressed')}
-              key={_index}
-              last={slides.length === -1}
-              first={_index === 0}
+              key={index}
+              // last={slides.length === -1}
+              // first={_index === 0}
+              {...{
+                x,
+                index,
+                length: slides.length,
+                scroll
+              }}
             />
           ))}
-        </View>
+        </Animated.View>
       </View>
     </View>
   );
@@ -72,6 +81,5 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     backgroundColor: 'cyan'
-    // flex: 1,
   }
 });

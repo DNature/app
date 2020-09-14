@@ -42,7 +42,6 @@ export const Palette = {
 
 const theme = {
   dark: false,
-  roundness: 25,
   colors: {
     ...DefaultTheme.colors,
     primary: Palette.p[100],

@@ -6,7 +6,7 @@ import {
   StyleSheet,
   View
 } from 'react-native';
-import { Subheading } from 'react-native-paper';
+import { Subheading, useTheme } from 'react-native-paper';
 
 interface SlideProps {
   title: string;
@@ -21,6 +21,9 @@ const Slide = ({
   inverted,
   picture = require('../../../assets/images/illustrations/1.png')
 }: SlideProps) => {
+  const { colors } = useTheme();
+  const color = colors.b[50];
+
   return (
     <View
       style={[
@@ -37,7 +40,7 @@ const Slide = ({
           marginTop: inverted ? 60 : 0
         }}
       />
-      <Subheading style={styles.title}>{title}</Subheading>
+      <Subheading style={[styles.title, { color }]}>{title}</Subheading>
     </View>
   );
 };
@@ -51,6 +54,9 @@ const styles = StyleSheet.create({
     paddingTop: 67
   },
   title: {
-    textAlign: 'center'
+    textAlign: 'center',
+    fontSize: 18,
+    fontWeight: '500',
+    fontFamily: 'Poppins-Medium'
   }
 });
